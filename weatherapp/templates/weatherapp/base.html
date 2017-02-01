@@ -1,0 +1,41 @@
+{% load staticfiles %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+    <style>
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 100%;
+		}
+
+		td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
+
+		.pagination {
+			padding: 0;
+		}
+		.pagination li {
+			padding-top: 20px;
+		    padding-left: 16px;
+		    display: inline-block;
+		}
+	</style>
+        {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        {% block head %}{% endblock %}
+        
+ 		<div>
+ 			{% block content %}{% endblock %}
+ 		</div>
+    </body>
+</html>

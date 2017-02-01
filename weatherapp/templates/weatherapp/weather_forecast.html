@@ -1,0 +1,50 @@
+{% extends "weatherapp/base.html" %}
+
+{% block head %}
+	<span class="welcome">Welcome {{user}}</span>
+	<a href="{% url 'logout' %}?next={% url 'homepage' %}">Logout</a>
+	<h1>Today's Weather</h1>
+{% endblock %}
+
+{% block content %}
+	<table>
+		<tr>
+			<th>Date</th>
+			<th>High Temperature</th>
+			<th>Low Temperature</th>
+			<th>Wind Speed</th>
+			<th>Chance of Rain</th>
+		</tr>
+		{% for weather_forcast in weather_forecast_list %}
+		<tr>
+			<td>{{weather_forcast.date}}</td>
+			<td>{{weather_forcast.max_temp}}°C</td>
+			<td>{{weather_forcast.min_temp}}°C</td>
+			<td>{{weather_forcast.wind}}%</td>
+			<td>{{weather_forcast.rain}}%</td>
+		</tr>
+		{% endfor %}
+	</table>
+
+	{% if weather_forecast_list.has_other_pages %}
+		<ul class="pagination">
+			{% if weather_forecast_list.has_previous %}
+			<li><a href="?page={{ weather_forecast_list.previous_page_number }}">&laquo;</a></li>
+			{% else %}
+			<li class="disabled"><span>&laquo;</span></li>
+			{% endif %}
+			{% for i in weather_forecast_list.paginator.page_range %}
+			{% if weather_forecast_list.number == i %}
+			<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+			{% else %}
+			<li><a href="?page={{ i }}">{{ i }}</a></li>
+			{% endif %}
+			{% endfor %}
+			{% if weather_forecast_list.has_next %}
+			<li><a href="?page={{ weather_forecast_list.next_page_number }}">&raquo;</a></li>
+			{% else %}
+			<li class="disabled"><span>&raquo;</span></li>
+		</ul>
+	{% endif %}
+{% endif %}
+{% endblock %}

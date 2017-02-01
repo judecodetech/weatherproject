@@ -1,0 +1,10 @@
+beautifulsoup4==4.5.1
+Django==1.10.2
+django-crontab==0.7.1
+django-filter==0.15.2
+djangorestframework==3.4.7
+ipython==5.1.0
+Markdown==2.6.7
+psycopg2==2.6.2
+pylint==1.6.4
+requests==2.11.1
