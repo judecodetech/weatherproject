@@ -1,6 +1,11 @@
-Instructions on how to run the Weather Application
-This application was written in Python 3
-** Navigate to root of project 'cd weatherproject'
+# Weather Project
+
+## Django Weather Forecast
+
+## To run this app, please follow the instructions below
+		Open your terminal
+		run git clone 
+ 		Navigate to root of project 'cd weatherproject'
 ** run the following commands in order:
 source venv/bin/activate
 Before you run the next command please make sure you have pip3
@@ -50,6 +55,7 @@ the admin backend
 On first registration the there will be no weather data. To get instant data,
 run the following command:
 python3 manage.py weather_forecast
+
 API
 You must be a django user to view the API data otherwise you will be locked
 out and thrown an error messsage.
