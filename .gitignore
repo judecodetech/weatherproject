@@ -1,0 +1,4 @@
+venv
+weatherproject.egg-info
+weatherapp.sqlite3
+.DS_Store

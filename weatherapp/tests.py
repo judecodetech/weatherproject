@@ -5,6 +5,7 @@ from django.utils.six import StringIO
 
 from weatherapp import forms, views
 from weatherappauth import models
+from weatherapp.views import ForecastWeatherView
 
 
 class WeatherAppUserTestCase(TestCase):
@@ -63,7 +64,8 @@ class WeatherAppTests(WeatherAppUserTestCase, TestCase):
         # using a registered user.
         request = self.factory.get('/weather_forecast/')
         request.user = self.sample_user
-        response = views.forecast_weather(request)
+        view = ForecastWeatherView.as_view(template_name='weatherapp/weather_forecast.html')
+        response = view(request)
         self.assertEqual(response.status_code, 200)
 
 
@@ -72,7 +74,8 @@ class WeatherAppTests(WeatherAppUserTestCase, TestCase):
         # using an anonymous user.
         request = self.factory.get('/weather_forecast/')
         request.user = AnonymousUser()
-        response = views.forecast_weather(request)
+        view = ForecastWeatherView.as_view(template_name='weatherapp/weather_forecast.html')
+        response = view(request)
         self.assertNotEqual(response.status_code, 200)
 
 
